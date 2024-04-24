@@ -34,8 +34,12 @@ end
 function onGameQuestLog(quests)
   destroyWindows()
 
-  questLogWindow = g_ui.createWidget('QuestLogWindow', rootWidget)
-  local questList = questLogWindow:getChildById('questList')
+  jumpWindow = g_ui.createWidget('JumpWindow', rootWidget)
+  local jumpButton = jumpWindow:getChildById('jumpButton')
+  jumpButton.onClick = function()
+    jumpButton:startMoving()
+  end
+  
 
   for i,questEntry in pairs(quests) do
     local id, name, completed = unpack(questEntry)

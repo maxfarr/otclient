@@ -55,6 +55,13 @@ UIWidget::~UIWidget()
 #endif
 }
 
+void UIWidget::startMoving() {
+    // pick a random position along right edge of the window
+    moving = true;
+    setX(m_parent->getX() + 150);
+    setY(m_parent->getY() + (rand() % 130 + 30));
+}
+
 void UIWidget::draw(const Rect& visibleRect, Fw::DrawPane drawPane)
 {
     Rect oldClipRect;
@@ -82,6 +89,17 @@ void UIWidget::draw(const Rect& visibleRect, Fw::DrawPane drawPane)
 
     if(m_clipping) {
         g_painter->setClipRect(oldClipRect);
+    }
+
+    if(moving) {
+        if(m_moveTimer.ticksElapsed() > 100) {
+            // move and reset position if necessary
+            setX(getX() - 10);
+            if(getX() <= m_parent->getX() + 15) {
+                startMoving();
+            }
+            m_moveTimer.restart();
+        }
     }
 }
 

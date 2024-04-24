@@ -624,6 +624,7 @@ void Application::registerLuaFunctions()
     g_lua.bindClassMemberFunction<UIWidget>("getTextWrap", &UIWidget::getTextWrap);
     g_lua.bindClassMemberFunction<UIWidget>("getFont", &UIWidget::getFont);
     g_lua.bindClassMemberFunction<UIWidget>("getTextSize", &UIWidget::getTextSize);
+    g_lua.bindClassMemberFunction<UIWidget>("startMoving", &UIWidget::startMoving);
 
     // UILayout
     g_lua.registerClass<UILayout>();

@@ -76,6 +76,7 @@ protected:
     UIWidgetPtr m_focusedChild;
     OTMLNodePtr m_style;
     Timer m_clickTimer;
+    Timer m_moveTimer;
     Fw::FocusReason m_lastFocusReason;
     Fw::AutoFocusPolicy m_autoFocusPolicy;
 
@@ -221,6 +222,9 @@ public:
     void show() { setVisible(true); }
     void disable() { setEnabled(false); }
     void enable() { setEnabled(true); }
+
+    bool moving = false;
+    void startMoving();
 
     bool isActive() { return hasState(Fw::ActiveState); }
     bool isEnabled() { return !hasState(Fw::DisabledState); }

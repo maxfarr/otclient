@@ -18,6 +18,17 @@ QuestLabel < Label
   $!on focus:
     color: #ffffff
 
+JumpWindow < MainWindow
+  id: jumpWindow
+  !text: tr('')
+  size: 200 200
+  @onEscape: self:destroy()
+
+  Button
+    id: jumpButton
+    !text: tr('Jump!')
+    width: 50
+
 QuestLogWindow < MainWindow
   id: questLogWindow
   !text: tr('Quest Log')
